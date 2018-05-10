@@ -9,7 +9,7 @@ namespace Metricity.Data.Entities
     public class Metric
     { 
         public int MetricId { get; set; }
-        public string AppliactionName { get; set; }
+        public string ApplicationName { get; set; }
         public string MethodName { get; set; }
         public TimeSpan Duration { get; set; }
     }

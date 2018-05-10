@@ -9,9 +9,9 @@ using System.Timers;
 
 namespace Metricity
 {
-    public class Monitor
+    public static class Monitor
     {
-        public void MonitorMethod(Action action, string methodName, string applicationName)
+        public static void MonitorMethod(Action action, string methodName, string applicationName)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -20,7 +20,7 @@ namespace Metricity
             Submit(methodName, applicationName, stopwatch.Elapsed);
         }
 
-        public async Task MonitorMethodAsync(Func<Task<Action>> action, string methodName, string applicationName)
+        public static async Task MonitorMethodAsync(Func<Task<Action>> action, string methodName, string applicationName)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -29,13 +29,15 @@ namespace Metricity
             Submit(methodName, applicationName, stopwatch.Elapsed);
         }
 
-        private void Submit(string methodName, string applicationName, TimeSpan elapsed)
+        private static void Submit(string methodName, string applicationName, TimeSpan elapsed)
         {
             using (var db = new MetricityContext())
             {
-                db.Metrics.Add(new Data.Entities.Metric() { Duration = elapsed, AppliactionName = applicationName, MethodName = methodName });
+                db.Metrics.Add(new Data.Entities.Metric() { Duration = elapsed, ApplicationName = applicationName, MethodName = methodName });
                 db.SaveChanges();
             }
         }
+
+        
     }
 }

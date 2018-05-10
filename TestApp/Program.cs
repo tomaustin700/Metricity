@@ -9,20 +9,17 @@ namespace TestApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async void Main(string[] args)
         {
-            Metricity.Monitor.MonitorMethod(() =>
-            {
-                RunMethod();
-            }, "RunMethod", "TestApp");
+            //Metricity.Monitor.MonitorMethod(async() => await RunMethod(), "TestApp");
 
         }
 
-        public static void RunMethod()
+        public async static Task RunMethod()
         {
             Thread.Sleep(1000);
         }
 
-       
+
     }
 }

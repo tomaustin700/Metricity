@@ -12,53 +12,45 @@ namespace Metricity
 {
     public static class Monitor
     {
-        public static void MonitorMethod(Expression<Action> action, string applicationName)
+        public static void MonitorSync(Action action, string metricName, string applicationName)
         {
-            var methodCallExp = (MethodCallExpression)action.Body;
-            string methodName = methodCallExp.Method.Name;
-            Action method = action.Compile();
-
-            RunMethod(method, methodName, applicationName);
+            RunMethod(action, metricName, applicationName);
         }
 
-        public static async Task MonitorMethod(Expression<Func<Task<Action>>> action, string applicationName)
+        public static async Task MonitorAsync(Func<Task> action, string metricName, string applicationName)
         {
-            var methodCallExp = (MethodCallExpression)action.Body;
-            string methodName = methodCallExp.Method.Name;
-            Func<Task<Action>> method = action.Compile();
-
-            await RunMethod(method, methodName, applicationName);
+            await RunMethod(action, metricName, applicationName);
         }
 
-        private static void RunMethod(Action action, string methodName, string applicationName)
+        private static void RunMethod(Action action, string metricName, string applicationName)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             action.Invoke();
             stopwatch.Stop();
-            Submit(methodName, applicationName, stopwatch.Elapsed);
+            Submit(metricName, applicationName, stopwatch.Elapsed);
         }
 
-        private async static Task RunMethod(Func<Task<Action>> action, string methodName, string applicationName)
+        private async static Task RunMethod(Func<Task> action, string metricName, string applicationName)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             await action();
             stopwatch.Stop();
-            Submit(methodName, applicationName, stopwatch.Elapsed);
+            Submit(metricName, applicationName, stopwatch.Elapsed);
         }
 
-       
 
-        private static void Submit(string methodName, string applicationName, TimeSpan elapsed)
+
+        private static void Submit(string metricName, string applicationName, TimeSpan elapsed)
         {
             using (var db = new MetricityContext())
             {
-                db.Metrics.Add(new Data.Entities.Metric() { Duration = elapsed, ApplicationName = applicationName, MethodName = methodName });
+                db.Metrics.Add(new Data.Entities.Metric() { Duration = elapsed, ApplicationName = applicationName, MetricName = metricName });
                 db.SaveChanges();
             }
         }
 
-        
+
     }
 }

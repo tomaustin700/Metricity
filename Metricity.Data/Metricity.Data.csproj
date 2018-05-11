@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201805102100224_fixedapplicationnamespelling.Designer.cs">
       <DependentUpon>201805102100224_fixedapplicationnamespelling.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805111957138_RenameMethodName.cs" />
+    <Compile Include="Migrations\201805111957138_RenameMethodName.Designer.cs">
+      <DependentUpon>201805111957138_RenameMethodName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
@@ -71,6 +75,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805102100224_fixedapplicationnamespelling.resx">
       <DependentUpon>201805102100224_fixedapplicationnamespelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805111957138_RenameMethodName.resx">
+      <DependentUpon>201805111957138_RenameMethodName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

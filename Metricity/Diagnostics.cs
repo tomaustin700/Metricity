@@ -20,7 +20,7 @@ namespace Metricity
         }
 
         /// <summary>
-        /// Gets the current cpu usage sum accross each core e.g. if 400 is returned on a 4 coure processor each core is running at 100%
+        /// Gets the current cpu usage sum accross each core e.g. if 400 is returned on a 4 core processor each core is running at 100%
         /// </summary>
         /// <returns></returns>
         public static float GetCurrentCPUUsage()

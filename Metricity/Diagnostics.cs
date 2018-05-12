@@ -13,7 +13,7 @@ namespace Metricity
         /// Gets the current memory working set value of the running process
         /// </summary>
         /// <returns></returns>
-        public static float GetCurrentMemoryUsage()
+        public static float GetMemoryUsage()
         {
             PerformanceCounter memory = new PerformanceCounter("Process", "Working Set", Process.GetCurrentProcess().ProcessName);
             return memory.NextValue();
@@ -23,7 +23,7 @@ namespace Metricity
         /// Gets the current cpu usage sum accross each core e.g. if 400 is returned on a 4 core processor each core is running at 100%
         /// </summary>
         /// <returns></returns>
-        public static float GetCurrentCPUUsage()
+        public static float GetCPUUsage()
         {
             PerformanceCounter cpu = new PerformanceCounter("Processor", "% Processor Time", "_Total"); 
             return cpu.NextValue();

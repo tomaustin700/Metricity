@@ -15,13 +15,13 @@ namespace TestApp
             Metricity.RemoteLog.Log(async () =>
             {
                 await RunMethod();
-            }, "Main", "TestApp");
+            });
 
             RemoteLog.Log(() =>
             {
                 RunSync();
 
-            }, "Test", "Test");
+            });
 
             var test = Diagnostics.GetCurrentMemoryUsage();
             var cpu = Diagnostics.GetCurrentCPUUsage();

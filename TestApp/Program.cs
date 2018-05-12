@@ -12,19 +12,18 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            Metricity.RemoteLog.Log(async () =>
-            {
-                await RunMethod();
-            });
 
-            RemoteLog.Log(() =>
+            var usage1 = Diagnostics.GetMemoryUsage();
+
+            var change = Diagnostics.GetMemoryChange(() =>
             {
                 RunSync();
 
             });
 
-            var test = Diagnostics.GetCurrentMemoryUsage();
-            var cpu = Diagnostics.GetCurrentCPUUsage();
+            var usage2 = Diagnostics.GetMemoryUsage();
+
+            
 
         }
 
@@ -35,7 +34,7 @@ namespace TestApp
 
         public static void RunSync()
         {
-            Thread.Sleep(1000);
+            var test = new int[100000000];
 
         }
 

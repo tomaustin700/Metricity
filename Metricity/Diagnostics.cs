@@ -13,10 +13,43 @@ namespace Metricity
         /// Gets the current memory working set value of the running process
         /// </summary>
         /// <returns></returns>
-        public static float GetMemoryUsage()
+        public static double GetMemoryUsage()
         {
             PerformanceCounter memory = new PerformanceCounter("Process", "Working Set", Process.GetCurrentProcess().ProcessName);
-            return memory.NextValue();
+            return ConvertBytesToMegabytes(Convert.ToInt32(memory.NextValue()));
+        }
+
+        /// <summary>
+        /// Gets the memory difference from before the action was performed and then after
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static double GetMemoryChange(Action action)
+        {
+            var start = GetMemoryUsage();
+            action.Invoke();
+            var end = GetMemoryUsage();
+            var difference = end - start;
+            return ConvertBytesToMegabytes(Convert.ToInt32(difference));
+        }
+
+        /// <summary>
+        /// Gets the memory difference from before the action was performed and then after
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static async Task<double> GetMemoryChange(Func<Task> action)
+        {
+            var start = GetMemoryUsage();
+            await action.Invoke();
+            var end = GetMemoryUsage();
+            var difference = end - start;
+            return ConvertBytesToMegabytes(Convert.ToInt32(difference));
+        }
+
+        private static double ConvertBytesToMegabytes(long bytes)
+        {
+            return (bytes / 1024f) / 1024f;
         }
 
         /// <summary>
@@ -25,7 +58,7 @@ namespace Metricity
         /// <returns></returns>
         public static float GetCPUUsage()
         {
-            PerformanceCounter cpu = new PerformanceCounter("Processor", "% Processor Time", "_Total"); 
+            PerformanceCounter cpu = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             return cpu.NextValue();
         }
 

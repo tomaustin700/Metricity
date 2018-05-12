@@ -15,22 +15,22 @@ namespace Metricity
     public static class RemoteLog
     {
         private static List<Metric> _cachedMetrics = new List<Metric>();
-        public static void RemoteLogSync(Action action, string metricName, string applicationName)
+        public static void Log(Action action, string metricName, string applicationName)
         {
             RunMethod(action, metricName, applicationName, false);
         }
 
-        public static void CacheLogSync(Action action, string metricName, string applicationName)
+        public static void CacheLog(Action action, string metricName, string applicationName)
         {
             RunMethod(action, metricName, applicationName, true);
         }
 
-        public static async Task RemoteLogAsync(Func<Task> action, string metricName, string applicationName)
+        public static async Task Log(Func<Task> action, string metricName, string applicationName)
         {
             await RunMethod(action, metricName, applicationName, false);
         }
 
-        public static async Task CacheLogAsync(Func<Task> action, string metricName, string applicationName)
+        public static async Task CacheLog(Func<Task> action, string metricName, string applicationName)
         {
             await RunMethod(action, metricName, applicationName, true);
         }

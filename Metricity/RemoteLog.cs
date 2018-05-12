@@ -63,7 +63,11 @@ namespace Metricity
                 db.Metrics.AddRange(_cachedMetrics);
                 db.SaveChanges();
             }
+        }
 
+        public static void ClearCache()
+        {
+            _cachedMetrics = new List<Metric>();
         }
         
         public static List<MetricDTO> GetCache()

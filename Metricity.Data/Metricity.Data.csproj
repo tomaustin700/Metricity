@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\MetricDTO.cs" />
     <Compile Include="Entities\Metric.cs" />
     <Compile Include="MetricityContext.cs" />
     <Compile Include="Migrations\201805102012008_init.cs" />

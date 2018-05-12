@@ -11,7 +11,7 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            Metricity.Monitor.MonitorSync(async () =>
+            Metricity.RemoteLog.RemoteLogAsync(async () =>
             {
                 await RunMethod();
                 await RunMethod();

@@ -1,5 +1,5 @@
 # Metricity
-Diagnostic utilities for .Net applications
+Metric and diagnostic utilities for .Net 
 
 ![Build](https://img.shields.io/travis/tomaustin700/Metricity.svg) ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.svg) ![Licence](https://img.shields.io/github/license/tomaustin700/Metricity.svg)
 # Installation

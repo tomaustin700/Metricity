@@ -13,39 +13,28 @@ namespace Metricity
 
         public static void Increment(string counterName, string subset = "")
         {
-            if (!_activeCounters.Any(x => x.Name == counterName))
+            if (!_activeCounters.Any(x => x.Name == counterName && x.SubSetName == subset))
                 _activeCounters.Add(new CounterInfo() { Name = counterName, SubSetName = subset });
             else
-                _activeCounters.Single(x => x.Name == counterName).Count++;
+                _activeCounters.Single(x => x.Name == counterName && x.SubSetName == subset).Count++;
         }
 
         public static void Decrement(string counterName, string subset = "")
         {
-            if (!_activeCounters.Any(x => x.Name == counterName))
-                throw new InvalidOperationException("A counter for " + counterName + " is not being monitored");
-            else if (_activeCounters.Single(x => x.Name == counterName).Count == 0)
-                throw new InvalidOperationException(counterName + " is already at zero");
+            if (!_activeCounters.Any(x => x.Name == counterName && x.SubSetName == subset))
+                throw new InvalidOperationException(string.IsNullOrEmpty(subset) ? "A counter for " + counterName + " is not being monitored" : "A counter for " + counterName + " (" + subset + ") " + " is not being monitored");
+            else if (_activeCounters.Single(x => x.Name == counterName && x.SubSetName == subset).Count == 0)
+                throw new InvalidOperationException(string.IsNullOrEmpty(subset) ? counterName + " is already at zero" : counterName + " (" + subset + ") " + " is already at zero");
             else
-                _activeCounters.Single(x => x.Name == counterName).Count--;
+                _activeCounters.Single(x => x.Name == counterName && x.SubSetName == subset).Count = 0;
         }
 
         public static void ClearCounter(string counterName, string subset = "")
         {
-            if (string.IsNullOrEmpty(subset))
-            {
-                if (!_activeCounters.Any(x => x.Name == counterName))
-                    throw new InvalidOperationException("A counter for " + counterName + " is not being monitored");
-                else
-                    _activeCounters.Remove(_activeCounters.Single(x => x.Name == counterName));
-            }
+            if (!_activeCounters.Any(x => x.Name == counterName && x.SubSetName == subset))
+                throw new InvalidOperationException(string.IsNullOrEmpty(subset) ? "A counter for " + counterName + " is not being monitored" : "A counter for " + counterName + " (" + subset + ") " + " is not being monitored");
             else
-            {
-                if (!_activeCounters.Any(x => x.Name == counterName && x.SubSetName == subset))
-                    throw new InvalidOperationException("A counter for " + counterName + " (" + subset + ") " + " is not being monitored");
-                else
-                    _activeCounters.Remove(_activeCounters.Single(x => x.Name == counterName && x.SubSetName == subset));
-
-            }
+                _activeCounters.Remove(_activeCounters.Single(x => x.Name == counterName && x.SubSetName == subset));
         }
 
         public static void PurgeCounters()
@@ -73,20 +62,10 @@ namespace Metricity
 
         public static int GetCurrentCount(string counterName, string subset = "")
         {
-            if (string.IsNullOrEmpty(subset))
-            {
-                if (!_activeCounters.Any(x => x.Name == counterName))
-                    throw new InvalidOperationException("A counter for " + counterName + " is not being monitored");
-                else
-                    return _activeCounters.Single(x => x.Name == counterName).Count;
-            }
+            if (!_activeCounters.Any(x => x.Name == counterName && x.SubSetName == subset))
+                throw new InvalidOperationException(string.IsNullOrEmpty(subset) ? "A counter for " + counterName + " is not being monitored" : "A counter for " + counterName + " (" + subset + ") " + " is not being monitored");
             else
-            {
-                if (!_activeCounters.Any(x => x.Name == counterName && x.SubSetName == subset))
-                    throw new InvalidOperationException("A counter for " + counterName + " (" + subset + ") " + " is not being monitored");
-                else
-                    return _activeCounters.Single(x => x.Name == counterName && x.SubSetName == subset).Count;
-            }
+                return _activeCounters.Single(x => x.Name == counterName && x.SubSetName == subset).Count;
         }
 
     }

@@ -16,6 +16,7 @@ namespace Metricity.Classes
         public CounterInfo()
         {
             Count = 1;
+            SubSetName = string.Empty;
         }
     }
 }

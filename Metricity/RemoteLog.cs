@@ -1,6 +1,8 @@
 ﻿using Metricity.Data;
 using Metricity.Data.DTOs;
 using Metricity.Data.Entities;
+using Metricity.Data.Repositories;
+using Metricity.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,13 +17,23 @@ namespace Metricity
 {
     public static class RemoteLog
     {
-        private static List<Metric> _cachedMetrics = new List<Metric>();
+        private static List<MetricDTO> _cachedMetrics = new List<MetricDTO>();
         public static void Log(Action action, string metricName = null, string applicationName = null)
         {
             if (string.IsNullOrEmpty(metricName))
                 metricName = GenerateGuid(action.Method.Name);
 
             RunMethod(action, metricName, applicationName, false);
+        }
+
+        public static string GetActionGuid(Action action)
+        {
+            return GenerateGuid(action.Method.Name);
+        }
+
+        public static string GetActionGuid(Func<Task> action)
+        {
+            return GenerateGuid(action.Method.Name);
         }
 
         public static void CacheLog(Action action, string metricName = null, string applicationName = null)
@@ -31,7 +43,7 @@ namespace Metricity
 
             RunMethod(action, metricName, applicationName, true);
         }
-        
+
         public static async Task Log(Func<Task> action, string metricName = null, string applicationName = null)
         {
             if (string.IsNullOrEmpty(metricName))
@@ -80,18 +92,17 @@ namespace Metricity
             if (!_cachedMetrics.Any())
                 throw new InvalidOperationException("No cached metrics to commit");
 
-            using (var db = new MetricityContext())
+            using (var service = new MetricService())
             {
-                db.Metrics.AddRange(_cachedMetrics);
-                db.SaveChanges();
+                service.AddRange(_cachedMetrics);
             }
         }
 
         public static void ClearCache()
         {
-            _cachedMetrics = new List<Metric>();
+            _cachedMetrics = new List<MetricDTO>();
         }
-        
+
         public static List<MetricDTO> GetCache()
         {
             return _cachedMetrics.Select(x => new MetricDTO() { ApplicationName = x.ApplicationName, Duration = x.Duration, MetricName = x.MetricName }).ToList();
@@ -101,15 +112,14 @@ namespace Metricity
         {
             if (!cache)
             {
-                using (var db = new MetricityContext())
+                using (var service = new MetricService())
                 {
-                    db.Metrics.Add(new Data.Entities.Metric() { Duration = elapsed, ApplicationName = applicationName, MetricName = metricName });
-                    db.SaveChanges();
+                    service.Add(new MetricDTO { Duration = elapsed, ApplicationName = applicationName, MetricName = metricName });
                 }
             }
             else
             {
-                _cachedMetrics.Add(new Data.Entities.Metric() { Duration = elapsed, ApplicationName = applicationName, MetricName = metricName });
+                _cachedMetrics.Add(new MetricDTO { Duration = elapsed, ApplicationName = applicationName, MetricName = metricName });
             }
         }
 

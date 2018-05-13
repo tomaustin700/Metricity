@@ -15,13 +15,15 @@ namespace TestApp
 
             var usage1 = Diagnostics.GetMemoryUsage();
 
-            var change = Diagnostics.GetMemoryChange(() =>
+            RemoteLog.Log(() =>
             {
                 RunSync();
 
             });
 
             var usage2 = Diagnostics.GetMemoryUsage();
+
+            
 
             
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Metricity.Data
 {
-    public class MetricityContext : DbContext
+    internal class MetricityContext : DbContext
     {
         
         public MetricityContext() : base(Setup.GetConnectionString())

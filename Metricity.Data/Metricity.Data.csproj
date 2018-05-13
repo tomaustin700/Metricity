@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DTOs\MetricDTO.cs" />
     <Compile Include="Entities\Metric.cs" />
+    <Compile Include="Interfaces\IMetricRepository.cs" />
     <Compile Include="MetricityContext.cs" />
     <Compile Include="Migrations\201805102012008_init.cs" />
     <Compile Include="Migrations\201805102012008_init.Designer.cs">
@@ -64,6 +65,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\MetricRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Services\MetricService.cs" />
     <Compile Include="Setup.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CounterInfo.cs" />
+    <Compile Include="Classes\SubsetSplit.cs" />
+    <Compile Include="Counters.cs" />
     <Compile Include="Diagnostics.cs" />
     <Compile Include="RemoteLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

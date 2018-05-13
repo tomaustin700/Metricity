@@ -48,6 +48,11 @@ namespace Metricity
             }
         }
 
+        public static void PurgeCounters()
+        {
+            _activeCounters = new List<CounterInfo>();
+        }
+
         public static List<SubsetSplit> GetSubsetSplit(string counterName)
         {
             var split = new List<SubsetSplit>();

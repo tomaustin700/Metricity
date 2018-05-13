@@ -7,3 +7,6 @@ Diagnostic utilities for .Net applications
 Available on [Nuget](https://www.nuget.org/packages/Binance.Net/).
 ```
 pm> Install-Package Metricity
+```
+#  Getting Started
+Coming Soon...

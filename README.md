@@ -74,6 +74,9 @@ Metricity.RemoteLog.ClearCache();
 //Returns the current cache
 var cache = Metricity.RemoteLog.GetCache();
 
+//Commits cache to database
+Metricity.RemoteLog.CommitCache();
+
 //Increments the counter by one
 Metricity.Counters.Increment("counter");
 

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metricity", "Metricity\Metr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metricity.Data", "Metricity.Data\Metricity.Data.csproj", "{E7F40662-7431-42E5-9D51-0BD92C2C91FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{01148EAF-CD0E-4603-A21E-9E73B706B697}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{8005AE2E-6D8E-4B13-B76B-D91D0715BE8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{E7F40662-7431-42E5-9D51-0BD92C2C91FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7F40662-7431-42E5-9D51-0BD92C2C91FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7F40662-7431-42E5-9D51-0BD92C2C91FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01148EAF-CD0E-4603-A21E-9E73B706B697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01148EAF-CD0E-4603-A21E-9E73B706B697}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01148EAF-CD0E-4603-A21E-9E73B706B697}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01148EAF-CD0E-4603-A21E-9E73B706B697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8005AE2E-6D8E-4B13-B76B-D91D0715BE8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8005AE2E-6D8E-4B13-B76B-D91D0715BE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8005AE2E-6D8E-4B13-B76B-D91D0715BE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8005AE2E-6D8E-4B13-B76B-D91D0715BE8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

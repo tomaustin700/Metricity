@@ -1,18 +1,32 @@
-﻿using System;
+﻿using Metricity.Data.Entities;
+using Metricity.Data.Repositories;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Metricity.Data.Repositories
+namespace Metricity.Data
 {
-    internal class RepositoryBase<TEntity> : IDisposable where TEntity : class
+    internal class UnitOfWork<TEntity> : IDisposable where TEntity : class
     {
-        protected MetricityContext _context;
-        protected UnitOfWork<TEntity> _unitOfWork = new UnitOfWork<TEntity>();
-        internal void Save()
+        private MetricityContext _context = new MetricityContext();
+        private DbSet<TEntity> _createSet;
+        
+       
+        public void Commit()
         {
             _context.SaveChanges();
+        }
+
+        public DbSet<TEntity> CreateSet()
+        {
+            if (_createSet == null)
+            {
+                _createSet = new GenericRepository<TEntity>(_context)._dbSet;
+            }
+            return _createSet;
         }
 
         private bool disposed = false;
@@ -34,8 +48,5 @@ namespace Metricity.Data.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
-        
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Metricity.Data.DTOs;
+using Metricity.Data.Entities;
 using Metricity.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Metricity.Data.Repositories
 {
-    internal class HandledExceptionRepository : RepositoryBase, IHandledExceptionRepository
+    internal class HandledExceptionRepository : RepositoryBase<HandledException>, IHandledExceptionRepository
     {
         internal HandledExceptionRepository(MetricityContext context)
         {
@@ -17,8 +18,8 @@ namespace Metricity.Data.Repositories
 
         public void Add(HandledExceptionDTO handledException)
         {
-            _context.HandledExceptions.Add(new Entities.HandledException() { ExceptionType = handledException.ExceptionType, StackTrace = handledException.StackTrace, Occurred = handledException.Occurred });
-            Save();
+            _unitOfWork.CreateSet().Add(new Entities.HandledException() { ExceptionType = handledException.ExceptionType, StackTrace = handledException.StackTrace, Occurred = handledException.Occurred });
+            _unitOfWork.Commit();
         }
     }
 }

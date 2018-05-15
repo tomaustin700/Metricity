@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Metricity.Data.Repositories
 {
-    internal class MetricRepository : RepositoryBase, IMetricRepository
+    internal class MetricRepository : RepositoryBase<Metric>, IMetricRepository
     {
         internal MetricRepository(MetricityContext context)
         {
@@ -20,14 +20,14 @@ namespace Metricity.Data.Repositories
 
         public void Add(MetricDTO metric)
         {
-            _context.Metrics.Add(new Data.Entities.Metric() { Duration = metric.Duration, ApplicationName = metric.ApplicationName, MetricName = metric.MetricName });
-            Save();
+            _unitOfWork.CreateSet().Add(new Data.Entities.Metric() { Duration = metric.Duration, ApplicationName = metric.ApplicationName, MetricName = metric.MetricName });
+            _unitOfWork.Commit();
         }
 
         public void AddRange(List<MetricDTO> metrics)
         {
-            _context.Metrics.AddRange(metrics.Select(x => new Metric() { Duration = x.Duration, ApplicationName = x.ApplicationName, MetricName = x.MetricName }));
-            Save();
+            _unitOfWork.CreateSet().AddRange(metrics.Select(x => new Metric() { Duration = x.Duration, ApplicationName = x.ApplicationName, MetricName = x.MetricName }));
+            _unitOfWork.Commit();
         }
 
     }

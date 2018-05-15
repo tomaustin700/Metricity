@@ -47,8 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\HandledExceptionDTO.cs" />
     <Compile Include="DTOs\MetricDTO.cs" />
+    <Compile Include="Entities\HandledException.cs" />
     <Compile Include="Entities\Metric.cs" />
+    <Compile Include="Interfaces\IHandledExceptionRepository.cs" />
     <Compile Include="Interfaces\IMetricRepository.cs" />
     <Compile Include="MetricityContext.cs" />
     <Compile Include="Migrations\201805102012008_init.cs" />
@@ -63,10 +66,20 @@
     <Compile Include="Migrations\201805111957138_RenameMethodName.Designer.cs">
       <DependentUpon>201805111957138_RenameMethodName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151846271_AddedHandledException.cs" />
+    <Compile Include="Migrations\201805151846271_AddedHandledException.Designer.cs">
+      <DependentUpon>201805151846271_AddedHandledException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805151908537_InnerExceptionToStackTrace.cs" />
+    <Compile Include="Migrations\201805151908537_InnerExceptionToStackTrace.Designer.cs">
+      <DependentUpon>201805151908537_InnerExceptionToStackTrace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\HandledExceptionRepository.cs" />
     <Compile Include="Repositories\MetricRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Services\HandledExceptionService.cs" />
     <Compile Include="Services\MetricService.cs" />
     <Compile Include="Setup.cs" />
   </ItemGroup>
@@ -83,6 +96,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805111957138_RenameMethodName.resx">
       <DependentUpon>201805111957138_RenameMethodName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151846271_AddedHandledException.resx">
+      <DependentUpon>201805151846271_AddedHandledException.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151908537_InnerExceptionToStackTrace.resx">
+      <DependentUpon>201805151908537_InnerExceptionToStackTrace.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

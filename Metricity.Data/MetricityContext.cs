@@ -18,7 +18,8 @@ namespace Metricity.Data
         }
 
         public virtual DbSet<Metric> Metrics { get; set; }
+        public virtual DbSet<HandledException> HandledExceptions { get; set; }
 
-       
+
     }
 }

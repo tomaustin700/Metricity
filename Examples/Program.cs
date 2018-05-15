@@ -16,6 +16,7 @@ namespace Examples
 
         static async void RunExamples()
         {
+            
             //Returns time taken for execution of synchronous code
             var syncTime = Metricity.Timings.Time(() =>
             {
@@ -96,6 +97,13 @@ namespace Examples
 
             //Gets the percentage splits of subset counters
             var splits = Metricity.Counters.GetSubsetSplit("counter");
+
+            //Handles exceptions of the type that are passed in and writes an entry into HandledExceptions Table 
+            Metricity.Handlers.HandleException(() =>
+            {
+                ThrowException(new InvalidCastException());
+
+            }, new List<Exception>() { new InvalidOperationException() });
         }
 
         static void SyncMethod()
@@ -107,5 +115,12 @@ namespace Examples
         {
             await Task.Run(() => Thread.Sleep(1000));
         }
+
+        static void ThrowException(Exception ex)
+        {
+            throw ex;
+        }
+
+        
     }
 }

@@ -19,91 +19,91 @@ namespace Examples
 
             //Returns time taken for execution of synchronous code
             //var syncTime = Metricity.Timings.Time(() =>
-            //{
-            //    SyncMethod();
-            //});
+            {
+                SyncMethod();
+            });
 
-            ////Returns time taken for execution of asynchronous code
-            //var asyncTime = Metricity.Timings.Time(async () =>
-            //{
-            //    await ASyncMethod();
-            //});
+            //Returns time taken for execution of asynchronous code
+            var asyncTime = Metricity.Timings.Time(async () =>
+            {
+                await ASyncMethod();
+            });
 
-            ////Returns current memory usage of application
-            //var memoryUsage = Metricity.Diagnostics.GetMemoryUsage();
+            //Returns current memory usage of application
+            var memoryUsage = Metricity.Diagnostics.GetMemoryUsage();
 
-            ////Returns current cpu usage of application
-            //var cpuUsage = Metricity.Diagnostics.GetCPUUsage();
+            //Returns current cpu usage of application
+            var cpuUsage = Metricity.Diagnostics.GetCPUUsage();
 
-            ////Returns difference in memory usage from before synchronous code execution and after
-            //var memoryChangeSync = Metricity.Diagnostics.GetMemoryChange(() =>
-            //{
-            //    SyncMethod();
-            //});
+            //Returns difference in memory usage from before synchronous code execution and after
+            var memoryChangeSync = Metricity.Diagnostics.GetMemoryChange(() =>
+            {
+                SyncMethod();
+            });
 
-            ////Returns difference in memory usage from before asynchronous code execution and after
-            //var memoryChangeASync = Metricity.Diagnostics.GetMemoryChange(async () =>
-            //{
-            //    await ASyncMethod();
-            //});
+            //Returns difference in memory usage from before asynchronous code execution and after
+            var memoryChangeASync = Metricity.Diagnostics.GetMemoryChange(async () =>
+            {
+                await ASyncMethod();
+            });
 
-            ////Logs time taken for execution of synchronous code to database
+            //Logs time taken for execution of synchronous code to database
             Metricity.RemoteLog.Log(() =>
             {
                 SyncMethod();
             });
 
-            ////Logs time taken for execution of asynchronous code to database
-            //await Metricity.RemoteLog.Log(async () =>
-            //{
-            //    await ASyncMethod();
-            //});
+            //Logs time taken for execution of asynchronous code to database
+            await Metricity.RemoteLog.Log(async () =>
+            {
+                await ASyncMethod();
+            });
 
             //Logs time taken for execution of synchronous code to cache, cache is then commited to database when CommitCache is called
-            //Metricity.RemoteLog.CacheLog(() =>
-            //{
-            //    SyncMethod();
-            //});
+            Metricity.RemoteLog.CacheLog(() =>
+            {
+                SyncMethod();
+            });
 
-            ////Logs time taken for execution of synchronous code to cache, cache is then commited to database when CommitCache is called
-            //await Metricity.RemoteLog.CacheLog(async () =>
-            //{
-            //    await ASyncMethod();
-            //});
+            //Logs time taken for execution of synchronous code to cache, cache is then commited to database when CommitCache is called
+            await Metricity.RemoteLog.CacheLog(async () =>
+            {
+                await ASyncMethod();
+            });
 
-            ////Clears all metrics from the cache
-            //Metricity.RemoteLog.ClearCache();
+            //Clears all metrics from the cache
+            Metricity.RemoteLog.ClearCache();
 
-            ////Returns the current cache
-            //var cache = Metricity.RemoteLog.GetCache();
+            //Returns the current cache
+            var cache = Metricity.RemoteLog.GetCache();
 
-            ////Commits cache to database
-            //Metricity.RemoteLog.CommitCache();
+            //Commits cache to database
+            Metricity.RemoteLog.CommitCache();
 
-            ////Increments the counter by one
-            //Metricity.Counters.Increment("counter");
+            //Increments the counter by one
+            Metricity.Counters.Increment("counter");
 
-            ////Decrements the counter by one
-            //Metricity.Counters.Decrement("counter");
+            //Decrements the counter by one
+            Metricity.Counters.Decrement("counter");
 
-            ////Returns the count of the specified counter
-            //Metricity.Counters.GetCurrentCount("counter");
+            //Returns the count of the specified counter
+            Metricity.Counters.GetCurrentCount("counter");
 
-            ////Resets the specified counter
-            //Metricity.Counters.ClearCounter("counter");
+            //Resets the specified counter
+            Metricity.Counters.ClearCounter("counter");
 
-            ////Resets all counters
-            //Metricity.Counters.PurgeCounters();
+            //Resets all counters
+            Metricity.Counters.PurgeCounters();
 
-            ////Gets the percentage splits of subset counters
-            //var splits = Metricity.Counters.GetSubsetSplit("counter");
+            //Gets the percentage splits of subset counters
+            var splits = Metricity.Counters.GetSubsetSplit("counter");
 
-            ////Handles exceptions of the type that are passed in and writes an entry into HandledExceptions Table 
-            //Metricity.Handlers.HandleException(() =>
-            //{
-            //    ThrowException(new InvalidCastException());
+            //Handles exceptions of the type that are passed in and writes an entry into HandledExceptions Table 
+            Metricity.Handlers.HandleException(() =>
+            {
+                ThrowException(new InvalidCastException());
 
-            //}, new List<Exception>() { new InvalidOperationException() });
+            }, new List<Exception>() { new InvalidOperationException() });
         }
 
         static void SyncMethod()

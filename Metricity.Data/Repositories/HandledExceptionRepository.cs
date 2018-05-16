@@ -9,17 +9,12 @@ using System.Threading.Tasks;
 
 namespace Metricity.Data.Repositories
 {
-    internal class HandledExceptionRepository : RepositoryBase<HandledException>, IHandledExceptionRepository
+    internal class HandledExceptionRepository : Repository<HandledException, int>, IHandledExceptionRepository
     {
-        internal HandledExceptionRepository(MetricityContext context)
+        internal HandledExceptionRepository(MetricityContext unitOfWork) : base(unitOfWork)
         {
-            _context = context;
-        }
 
-        public void Add(HandledExceptionDTO handledException)
-        {
-            _unitOfWork.CreateSet().Add(new Entities.HandledException() { ExceptionType = handledException.ExceptionType, StackTrace = handledException.StackTrace, Occurred = handledException.Occurred });
-            _unitOfWork.Commit();
         }
+        
     }
 }

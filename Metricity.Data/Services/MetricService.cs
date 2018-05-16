@@ -20,34 +20,23 @@ namespace Metricity.Data.Services
 
         public void Add(MetricDTO metric)
         {
-            _metricRepository.Add(metric);
+            _metricRepository.Add(new Entities.Metric() { ApplicationName = metric.ApplicationName, Duration = metric.Duration, MetricName = metric.MetricName });
+            _metricRepository.UnitOfWork.Commit();
 
         }
 
         public void AddRange(List<MetricDTO> metrics)
         {
-            _metricRepository.AddRange(metrics);
+            _metricRepository.AddRange(metrics.Select(x => new Entities.Metric() { ApplicationName = x.ApplicationName, Duration = x.Duration, MetricName = x.MetricName }));
+            _metricRepository.UnitOfWork.Commit();
 
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _metricRepository.Dispose();
-                }
-            }
-            disposed = true;
         }
 
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _metricRepository.Dispose();
         }
+
+
     }
 }

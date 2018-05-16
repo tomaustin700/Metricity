@@ -1,6 +1,4 @@
-﻿using Metricity.Data.DTOs;
-using Metricity.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Metricity.Data.Interfaces
 {
-    internal interface IMetricRepository : IRepository<Metric, int>
+    internal interface IUnitOfWork : IDisposable
     {
-       
+        void Commit();
     }
 }

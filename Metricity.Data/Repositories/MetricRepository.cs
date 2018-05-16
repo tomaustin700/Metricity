@@ -10,25 +10,15 @@ using System.Threading.Tasks;
 
 namespace Metricity.Data.Repositories
 {
-    internal class MetricRepository : RepositoryBase<Metric>, IMetricRepository
+    internal class MetricRepository : Repository<Metric, int>, IMetricRepository
     {
-        internal MetricRepository(MetricityContext context)
+        internal MetricRepository(MetricityContext unitOfWork) : base(unitOfWork)
         {
-            _context = context;
+            
         }
 
 
-        public void Add(MetricDTO metric)
-        {
-            _unitOfWork.CreateSet().Add(new Data.Entities.Metric() { Duration = metric.Duration, ApplicationName = metric.ApplicationName, MetricName = metric.MetricName });
-            _unitOfWork.Commit();
-        }
-
-        public void AddRange(List<MetricDTO> metrics)
-        {
-            _unitOfWork.CreateSet().AddRange(metrics.Select(x => new Metric() { Duration = x.Duration, ApplicationName = x.ApplicationName, MetricName = x.MetricName }));
-            _unitOfWork.Commit();
-        }
+       
 
     }
 }

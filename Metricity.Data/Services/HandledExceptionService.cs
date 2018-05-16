@@ -20,29 +20,18 @@ namespace Metricity.Data.Services
 
         public void Add(HandledExceptionDTO handledException)
         {
-            _handledExceptionRepository.Add(handledException);
-        }
+            _handledExceptionRepository.Add(new Entities.HandledException() { ExceptionType = handledException.ExceptionType, Occurred = handledException.Occurred, StackTrace = handledException.StackTrace });
+            _handledExceptionRepository.UnitOfWork.Commit();
 
-      
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _handledExceptionRepository.Dispose();
-                }
-            }
-            disposed = true;
         }
 
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            _handledExceptionRepository.Dispose();
         }
+
+
+
+
     }
 }

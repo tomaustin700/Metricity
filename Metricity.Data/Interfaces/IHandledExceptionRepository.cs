@@ -1,4 +1,5 @@
 ﻿using Metricity.Data.DTOs;
+using Metricity.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace Metricity.Data.Interfaces
 {
-    public interface IHandledExceptionRepository : IDisposable
+    internal interface IHandledExceptionRepository : IRepository<HandledException, int>
     {
-        void Add(HandledExceptionDTO handledException);
     }
 }

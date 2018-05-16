@@ -34,6 +34,11 @@ namespace Metricity.Data.Repositories
                 _unitOfWork.CreateSet<TEntity>().AddRange(entities);
         }
 
+        public virtual TEntity Find(TKey key)
+        {
+            return _unitOfWork.CreateSet<TEntity>().Find(key);
+        }
+
         public void Dispose()
         {
             UnitOfWork.Dispose();

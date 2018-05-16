@@ -18,7 +18,7 @@ namespace Examples
         {
 
             //Returns time taken for execution of synchronous code
-            //var syncTime = Metricity.Timings.Time(() =>
+            var syncTime = Metricity.Timings.Time(() =>
             {
                 SyncMethod();
             });

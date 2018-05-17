@@ -101,7 +101,7 @@ namespace Examples
             //Handles exceptions of the type that are passed in and writes an entry into HandledExceptions Table 
             Metricity.Handlers.HandleException(() =>
             {
-                ThrowException(new InvalidCastException());
+                ThrowException(new InvalidOperationException());
 
             }, new List<Exception>() { new InvalidOperationException() });
         }

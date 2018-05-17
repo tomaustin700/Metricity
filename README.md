@@ -9,7 +9,8 @@ Available on [Nuget](https://www.nuget.org/packages/Metricity/).
 pm> Install-Package Metricity
 ```
 #  Getting Started
-Coming Soon...
+In order to use any of the remote logging features you must have a sql database and run InitDatabase.sql on it in order for the correct tables to be generated. You also need to place your sql connection string in a text file named Connection.txt in
+C:\Users\YOURUSERNAME\AppData\Roaming\Metricity, if this file is missing an any remote logging features are used an exception will be thrown instructing you to create the file.
 
 # Usage
 

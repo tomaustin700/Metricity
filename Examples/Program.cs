@@ -12,6 +12,7 @@ namespace Examples
         static void Main(string[] args)
         {
             RunExamples();
+            Console.ReadLine();
         }
 
         static async void RunExamples()
@@ -71,17 +72,20 @@ namespace Examples
                 await ASyncMethod();
             });
 
+            //Commits cache to database
+            Metricity.RemoteLog.CommitCache();
+
             //Clears all metrics from the cache
             Metricity.RemoteLog.ClearCache();
 
             //Returns the current cache
             var cache = Metricity.RemoteLog.GetCache();
-
-            //Commits cache to database
-            Metricity.RemoteLog.CommitCache();
-
+            
             //Increments the counter by one
             Metricity.Counters.Increment("counter");
+
+            //Increments the counter by one on subset of counter
+            Metricity.Counters.Increment("counter", "subset");
 
             //Decrements the counter by one
             Metricity.Counters.Decrement("counter");
@@ -89,15 +93,15 @@ namespace Examples
             //Returns the count of the specified counter
             Metricity.Counters.GetCurrentCount("counter");
 
+            //Gets the percentage splits of subset counters
+            var splits = Metricity.Counters.GetSubsetSplit("counter");
+
             //Resets the specified counter
             Metricity.Counters.ClearCounter("counter");
 
             //Resets all counters
             Metricity.Counters.PurgeCounters();
-
-            //Gets the percentage splits of subset counters
-            var splits = Metricity.Counters.GetSubsetSplit("counter");
-
+            
             //Handles exceptions of the type that are passed in and writes an entry into HandledExceptions Table 
             Metricity.Handlers.HandleException(() =>
             {

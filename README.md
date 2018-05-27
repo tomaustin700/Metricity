@@ -1,7 +1,14 @@
 # Metricity
 Metric and diagnostic utilities for .Net 
 
-![Build](https://img.shields.io/travis/tomaustin700/Metricity.svg) ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.svg) ![Licence](https://img.shields.io/github/license/tomaustin700/Metricity.svg)
+![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.svg) ![Licence](https://img.shields.io/github/license/tomaustin700/Metricity.svg)
+
+| Repository        | Build Status           |
+| ------------- |:-------------:|
+| Metricity      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.svg) | 
+| Metricity.Data      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.svg) | 
+| Metricity.Data.Classes |![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.Classes.svg)| 
+
 # Installation
 ![Nuget version](https://img.shields.io/nuget/v/Metricity.svg)  ![Nuget downloads](https://img.shields.io/nuget/dt/Metricity.svg)
 Available on [Nuget](https://www.nuget.org/packages/Metricity/).

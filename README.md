@@ -1,13 +1,12 @@
-# Metricity
+# Metricity ![Licence](https://img.shields.io/github/license/tomaustin700/Metricity.svg)
 Metric and diagnostic utilities for .Net 
 
-![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.svg) ![Licence](https://img.shields.io/github/license/tomaustin700/Metricity.svg)
 
-| Repository        | Build Status           |
-| ------------- |:-------------:|
-| Metricity      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.svg) | 
-| Metricity.Data      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.svg) | 
-| Metricity.Data.Classes |![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.Classes.svg)| 
+| Repository        | Build Status           |Last Commit          |
+| ------------- |:-------------:|:-------------:|
+| Metricity      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.svg) | ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.svg)|
+| Metricity.Data      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.svg) | ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.data.svg)|
+| Metricity.Data.Classes |![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.Classes.svg)| ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.data.classes.svg)|
 
 # Installation
 ![Nuget version](https://img.shields.io/nuget/v/Metricity.svg)  ![Nuget downloads](https://img.shields.io/nuget/dt/Metricity.svg)

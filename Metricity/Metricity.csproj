@@ -57,13 +57,13 @@
     <Compile Include="Timings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Metricity.Data\Metricity.Data.csproj">
-      <Project>{e7f40662-7431-42e5-9d51-0bd92c2c91fc}</Project>
-      <Name>Metricity.Data</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Metricity.Data\Metricity.Data.csproj">
+      <Project>{E7F40662-7431-42E5-9D51-0BD92C2C91FC}</Project>
+      <Name>Metricity.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

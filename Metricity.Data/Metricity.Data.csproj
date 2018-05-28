@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Metricity.Data.Classes, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Metricity.Data.Classes.1.0.0.6\lib\net452\Metricity.Data.Classes.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -47,10 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\HandledExceptionDTO.cs" />
-    <Compile Include="DTOs\MetricDTO.cs" />
-    <Compile Include="Entities\HandledException.cs" />
-    <Compile Include="Entities\Metric.cs" />
     <Compile Include="Interfaces\IHandledExceptionRepository.cs" />
     <Compile Include="Interfaces\IMetricRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -79,6 +78,10 @@
     <Compile Include="Migrations\201805271406104_movetoseperateproject.cs" />
     <Compile Include="Migrations\201805271406104_movetoseperateproject.Designer.cs">
       <DependentUpon>201805271406104_movetoseperateproject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805281026251_AddAPIKeyToMetricEntity.cs" />
+    <Compile Include="Migrations\201805281026251_AddAPIKeyToMetricEntity.Designer.cs">
+      <DependentUpon>201805281026251_AddAPIKeyToMetricEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805271406104_movetoseperateproject.resx">
       <DependentUpon>201805271406104_movetoseperateproject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281026251_AddAPIKeyToMetricEntity.resx">
+      <DependentUpon>201805281026251_AddAPIKeyToMetricEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

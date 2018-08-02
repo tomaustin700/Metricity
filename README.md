@@ -5,7 +5,6 @@ Metric and diagnostic utilities for .Net
 | Repository        | Build Status           |Last Commit          |
 | ------------- |:-------------:|:-------------:|
 | Metricity      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.svg) | ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.svg)|
-| Metricity.Data      | ![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.svg) | ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.data.svg)|
 | Metricity.Data.Classes |![Build](https://img.shields.io/travis/tomaustin700/Metricity.Data.Classes.svg)| ![Last Commit](https://img.shields.io/github/last-commit/tomaustin700/metricity.data.classes.svg)|
 
 # Installation

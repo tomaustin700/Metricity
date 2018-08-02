@@ -13,11 +13,7 @@ namespace Metricity.Data
         private static string _apiKey;
         public static string GetConnectionString()
         {
-            if (!string.IsNullOrEmpty(_apiKey))
-            {
-               // _connectionString = connectionstringofonlineportal
-            }
-            else if (string.IsNullOrEmpty(_connectionString))
+            if (string.IsNullOrEmpty(_connectionString))
             {
                 if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metricity")))
                     Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metricity"));
@@ -39,6 +35,11 @@ namespace Metricity.Data
         public static void SetAPIKey(string apiKey)
         {
             _apiKey = apiKey;
+        }
+
+        public static string GetAPIKey()
+        {
+            return _apiKey;
         }
 
 

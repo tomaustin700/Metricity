@@ -20,8 +20,15 @@ namespace Metricity.Data.Services
 
         public void Add(HandledExceptionDTO handledException)
         {
-            _handledExceptionRepository.Add(new Entities.HandledException() { ExceptionType = handledException.ExceptionType, Occurred = handledException.Occurred, StackTrace = handledException.StackTrace });
-            _handledExceptionRepository.UnitOfWork.Commit();
+            if (string.IsNullOrEmpty(Setup.GetAPIKey()))
+            {
+                _handledExceptionRepository.Add(new Entities.HandledException() { ExceptionType = handledException.ExceptionType, Occurred = handledException.Occurred, StackTrace = handledException.StackTrace });
+                _handledExceptionRepository.UnitOfWork.Commit();
+            }
+            else
+            {
+                //Call Metricity API Helper
+            }
 
         }
 

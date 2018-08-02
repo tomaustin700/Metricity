@@ -13,6 +13,7 @@ namespace Metricity.Data.Services
     {
         private IMetricRepository _metricRepository;
 
+
         public MetricService()
         {
             _metricRepository = new MetricRepository(new MetricityContext());
@@ -20,15 +21,29 @@ namespace Metricity.Data.Services
 
         public void Add(MetricDTO metric)
         {
-            _metricRepository.Add(new Entities.Metric() { ApplicationName = metric.ApplicationName, Duration = metric.Duration, MetricName = metric.MetricName });
-            _metricRepository.UnitOfWork.Commit();
+            if (string.IsNullOrEmpty(Setup.GetAPIKey()))
+            {
+                _metricRepository.Add(new Entities.Metric() { ApplicationName = metric.ApplicationName, Duration = metric.Duration, MetricName = metric.MetricName });
+                _metricRepository.UnitOfWork.Commit();
+            }
+            else
+            {
+                //Call Metricity API Helper
+            }
 
         }
 
         public void AddRange(List<MetricDTO> metrics)
         {
-            _metricRepository.AddRange(metrics.Select(x => new Entities.Metric() { ApplicationName = x.ApplicationName, Duration = x.Duration, MetricName = x.MetricName }));
-            _metricRepository.UnitOfWork.Commit();
+            if (string.IsNullOrEmpty(Setup.GetAPIKey()))
+            {
+                _metricRepository.AddRange(metrics.Select(x => new Entities.Metric() { ApplicationName = x.ApplicationName, Duration = x.Duration, MetricName = x.MetricName }));
+                _metricRepository.UnitOfWork.Commit();
+            }
+            else
+            {
+                //Call Metricity API Helper
+            }
 
         }
 

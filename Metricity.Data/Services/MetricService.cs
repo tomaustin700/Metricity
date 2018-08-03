@@ -1,6 +1,7 @@
 ﻿using Metricity.Data.DTOs;
 using Metricity.Data.Interfaces;
 using Metricity.Data.Repositories;
+using MetricityAPIHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,10 @@ namespace Metricity.Data.Services
             }
             else
             {
-                //Call Metricity API Helper
+                using (var metricHelper = new MetricHelper(Guid.Parse(Setup.GetAPIKey())))
+                {
+                    metricHelper.Add(new Entities.Metric() { ApplicationName = metric.ApplicationName, Duration = metric.Duration, MetricName = metric.MetricName });
+                }
             }
 
         }
@@ -43,6 +47,10 @@ namespace Metricity.Data.Services
             else
             {
                 //Call Metricity API Helper
+                using (var metricHelper = new MetricHelper(Guid.Parse(Setup.GetAPIKey())))
+                {
+                    metricHelper.AddRange(metrics.Select(x => new Entities.Metric() { ApplicationName = x.ApplicationName, Duration = x.Duration, MetricName = x.MetricName }));
+                }
             }
 
         }

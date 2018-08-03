@@ -39,6 +39,11 @@ namespace Metricity.Data
 
         public static string GetAPIKey()
         {
+            if (string.IsNullOrEmpty(_apiKey))
+            {
+                _apiKey = System.IO.File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Metricity") + @"\APIKey.txt");
+            }
+
             return _apiKey;
         }
 

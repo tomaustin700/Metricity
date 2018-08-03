@@ -36,8 +36,14 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Metricity.Data.Classes, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Metricity.Data.Classes.1.0.0.6\lib\net452\Metricity.Data.Classes.dll</HintPath>
+    <Reference Include="Metricity.Data.Classes, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Metricity.Data.Classes.1.0.0.8\lib\net452\Metricity.Data.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="MetricityAPIHelper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetricityAPIHelper.1.0.0.1\lib\net461\MetricityAPIHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -83,6 +89,10 @@
     <Compile Include="Migrations\201805281026251_AddAPIKeyToMetricEntity.Designer.cs">
       <DependentUpon>201805281026251_AddAPIKeyToMetricEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808031508159_UpdatedEntities.cs" />
+    <Compile Include="Migrations\201808031508159_UpdatedEntities.Designer.cs">
+      <DependentUpon>201808031508159_UpdatedEntities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\HandledExceptionRepository.cs" />
@@ -117,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805281026251_AddAPIKeyToMetricEntity.resx">
       <DependentUpon>201805281026251_AddAPIKeyToMetricEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808031508159_UpdatedEntities.resx">
+      <DependentUpon>201808031508159_UpdatedEntities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

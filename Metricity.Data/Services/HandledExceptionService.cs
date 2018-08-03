@@ -1,6 +1,7 @@
 ﻿using Metricity.Data.DTOs;
 using Metricity.Data.Interfaces;
 using Metricity.Data.Repositories;
+using MetricityAPIHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,10 @@ namespace Metricity.Data.Services
             }
             else
             {
-                //Call Metricity API Helper
+                using (var handledExceptionHelper = new ExceptionHelper(Guid.Parse(Setup.GetAPIKey())))
+                {
+                    handledExceptionHelper.Add(new Entities.HandledException() { ExceptionType = handledException.ExceptionType, Occurred = handledException.Occurred, StackTrace = handledException.StackTrace });
+                }
             }
 
         }

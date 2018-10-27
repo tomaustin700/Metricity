@@ -104,7 +104,14 @@ namespace Examples
             {
                 ThrowException(new InvalidOperationException());
 
-            }, new List<Exception>() { new InvalidOperationException() });
+            }, new List<Exception>() { new InvalidOperationException() }, true);
+
+            //Handled exceptions for async methods
+            await Metricity.Handlers.HandleExceptionAsync(async () =>
+            {
+                await ThrowAsyncException(new InvalidOperationException());
+
+            }, new List<Exception>() { new InvalidOperationException() }, true);
         }
 
         static void SyncMethod()
@@ -122,6 +129,12 @@ namespace Examples
             throw ex;
         }
 
-        
+        static async Task ThrowAsyncException(Exception ex)
+        {
+            await ASyncMethod();
+            ThrowException(ex);
+        }
+
+
     }
 }

@@ -5,8 +5,6 @@ using MetricityAPIHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Metricity.Data.Services
 {
@@ -34,6 +32,22 @@ namespace Metricity.Data.Services
                 }
             }
 
+        }
+
+        public void AddRange(List<HandledExceptionDTO> exceptions)
+        {
+            if (string.IsNullOrEmpty(Setup.GetAPIKey()))
+            {
+                _handledExceptionRepository.AddRange(exceptions.Select(x => new Entities.HandledException() { ExceptionType = x.ExceptionType, Occurred = x.Occurred, StackTrace = x.StackTrace }));
+                _handledExceptionRepository.UnitOfWork.Commit();
+            }
+            else
+            {
+                using (var handledExceptionHelper = new ExceptionHelper(Guid.Parse(Setup.GetAPIKey())))
+                {
+                    handledExceptionHelper.AddRange(exceptions.Select(x => new Entities.HandledException() { ExceptionType = x.ExceptionType, Occurred = x.Occurred, StackTrace = x.StackTrace }));
+                }
+            }
         }
 
         public void Dispose()
